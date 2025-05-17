@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }.card {
+        background-color: #fff;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .card h1 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .card p {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .card button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .card button:hover {
+        background-color: #0056b3;
+    }
+
+    .message {
+        display: none;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #007bff;
+    }
+
+    .ps-message {
+        display: none;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #333;
+        font-style: italic;
+    }
+
+    .heart {
+        font-size: 24px;
+        color: #e74c3c;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #007bff;
+        border-radius: 50%;
+        animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-100vh); opacity: 1; }
+        100% { transform: translateY(100vh); opacity: 0; }
+    }
+</style>
+
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Birthday, Big Bro!</h1>
+        <p>Click the button to reveal a special message!</p>
+        <button onclick="showMessage()">Open</button>
+        <div class="message" id="message">You are more than a brother; you’re a role model and a friend. I’m so grateful to have you in my life. Happy Birthday!</div>
+        <div class="ps-message" id="ps-message">PS: You’re the best! Never forget that. - Pere-ere</div>
+        <div class="heart">❤</div>
+    </div><script>
+    function showMessage() {
+        const message = document.getElementById("message");
+        const psMessage = document.getElementById("ps-message");
+        message.style.display = "block";
+        setTimeout(() => {
+            psMessage.style.display = "block";
+        }, 2000);
+    }
+
+    function createConfetti() {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+    }
+
+    setInterval(createConfetti, 300);
+</script>
+
+</body>
+</html>
